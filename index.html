@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ADN Blitz | Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Roboto+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:opsz,wght,fill,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="kimey.css">
+</head>
+<body class="theme-windows"> <div class="game-wrapper">
+        <div class="top-nav">
+            <div class="modes">
+                <button class="mode-link active" onclick="switchMode('blitz')">blitz</button>
+                <button class="mode-link" onclick="switchMode('lab')">lab</button>
+            </div>
+            <span class="material-symbols-outlined settings-icon" onclick="toggleThemeMenu()">settings</span>
+        </div>
+
+        <div id="game-config" class="config">
+            <div class="modes-select">
+                <button class="mode-btn active" onclick="setGoal(5)">5</button>
+                <button class="mode-btn" onclick="setGoal(10)">10</button>
+                <button class="mode-btn" onclick="setGoal(15)">15</button>
+            </div>
+            <div id="timer-display">0.00s</div>
+        </div>
+
+        <div id="blitz-area">
+            <div id="progress">0 / 5</div>
+            <div class="display-container">
+                <div id="sequence-flow" class="sequence-flow"></div>
+            </div>
+            <div class="controls">
+                <button class="key" data-base="A" onclick="handleInput('A')">A</button>
+                <button class="key" data-base="T" onclick="handleInput('T')">T</button>
+                <button class="key" data-base="C" onclick="handleInput('C')">C</button>
+                <button class="key" data-base="G" onclick="handleInput('G')">G</button>
+            </div>
+        </div>
+
+        <div id="lab-area" class="hidden">
+            <div id="lab-progress">Problem: 0 / 5</div>
+            <div class="lab-card">
+                <p id="question-text">Loading...</p>
+                <input type="number" id="lab-answer" placeholder="answer" oninput="startTimer()">
+                <button class="submit-btn" onclick="checkLabAnswer()">sumit</button>
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="nav-btn" onclick="smartRestart()">RESTART</button>
+            <button class="nav-btn" onclick="smartForfeit()">FORFEIT</button>
+        </div>
+    </div>
+
+    <div id="result-screen" class="overlay hidden">
+        <div class="result-content">
+            <div class="graph-container">
+                <svg id="result-graph" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <path id="graph-path" d="" fill="none" stroke="var(--main)" stroke-width="2"/>
+                </svg>
+            </div>
+            <h2 style="color: var(--main); margin-bottom: 20px;">RESULT</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="label">time</div>
+                    <div id="res-time" class="val">0.00s</div>
+                </div>
+                <div class="stat-box">
+                    <div class="label">accuracy</div>
+                    <div id="res-acc" class="val">100%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="label">mode</div>
+                    <div id="res-mode" class="val">blitz</div>
+                </div>
+            </div>
+            <button class="submit-btn" style="margin-top: 30px;" onclick="closeResults()">RESTART</button>
+        </div>
+    </div>
+
+    <div id="theme-modal" class="overlay hidden">
+        <div class="menu-content centered-windows-menu">
+            <div class="win-title-bar">
+                <span class="win-title-text">DISPLAY PROPERTIES</span>
+                <button class="win-close-x" onclick="toggleThemeMenu()">X</button>
+            </div>
+            <div class="win-body">
+                <div class="setting-item centered-item">
+                    <label class="pixel-label">CHOOSE SCHEME:</label>
+                    <div class="select-wrapper">
+                        <select id="theme-select" onchange="changeTheme(this.value); toggleThemeMenu();">
+                            <option value="theme-dark">ClASSIC</option>
+                            <option value="theme-mario">MARIO WORLD</option>
+                            <option  value="theme-nature">NATURE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="win-footer">
+                    <button class="nav-btn win-ok-btn" onclick="toggleThemeMenu()">APPLY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root { 
+    --bg: #323437; 
+    --main: #e2b714; 
+    --sub: #646669; 
+    --text: #d1d0c5; 
+}
+
+.theme-dark { --bg: #323437; --main: #e2b714; --sub: #646669; --text: #d1d0c5; }
+.theme-mario { --bg: #5c94fc; --main: #ffcc00; --sub: #ffffff; --text: #ffffff; }
+.theme-mario .key {
+    background: #4976c9;
+}
+
+.theme-nature { --bg: #2d3a3a; --main: #a7c957; --sub: #6a994e; --text: #f2e8cf; }
+.theme-nature .key {
+    background: #242E2F;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: 'Kantumruy Pro', 'Roboto Mono', monospace;
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    padding-top: 60px; 
+    height: 100vh; 
+    overflow: hidden; 
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.game-wrapper { width: 100%; max-width: 340px; padding: 10px; }
+
+.top-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 40px; 
+    border-bottom: 1px solid var(--sub); 
+    padding-bottom: 10px; 
+}
+
+.mode-link { background: none; border: none; color: var(--sub); cursor: pointer; font-size: 1.1rem; }
+.mode-link.active { color: var(--main); border-bottom: 2px solid var(--main); }
+
+.config { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.mode-btn { background: none; border: none; color: var(--sub); cursor: pointer; padding: 5px 10px; }
+.mode-btn.active { color: var(--main); }
+#timer-display { color: var(--main); font-weight: bold; font-size: 1.2rem; }
+
+#progress, #lab-progress { text-align: center; color: var(--sub); margin-bottom: 10px; font-size: 0.85rem; }
+
+.display-container { 
+    height: 100px; 
+    background: rgba(0,0,0,0.2); 
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    border: 1px solid var(--sub); 
+}
+
+.char { font-size: 1.8rem; color: var(--sub); padding: 0 5px; }
+.char.active { font-size: 3.5rem; color: var(--main); font-weight: bold; }
+.char.correct { display: none; }
+
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.key { background: #2c2e31; border: 1px solid var(--sub); color: var(--text); padding: 25px 0; font-size: 2rem; border-radius: 8px; cursor: pointer; }
+
+.lab-card { 
+    background: rgba(0,0,0,0.2); 
+    padding: 15px; 
+    border-radius: 12px; 
+    text-align: center; 
+    border: 1px solid var(--sub);
+}
+
+#question-text { font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; min-height: 60px; }
+#lab-answer {
+    border: 1px solid var(--sub) ; 
+    padding: 10px; width: 100%; font-size: 1.2rem; margin-bottom: 12px; 
+    border-radius: 8px; text-align: center; outline: none;
+}
+
+.submit-btn { 
+    background: var(--main); color: #000; border: none; min-width: 130px; 
+    padding: 10px 20px; font-size: 0.9rem; font-weight: bold; border-radius: 6px; 
+    cursor: pointer; transition: transform 0.1s;
+}
+
+.submit-btn:active { transform: scale(0.95); background: #fff; }
+
+.hidden { display: none !important; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 100; }
+.nav-footer { margin-top: 30px; display: flex; justify-content: space-around; }
+.nav-btn { background: none; border: 1px solid var(--sub); color: var(--sub); padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+
+.select-wrapper { margin: 15px 0; display: flex; justify-content: center; width: 100%; }
+
+#theme-select {
+    width: 90%;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px inset #808080 !important;
+    padding: 5px;
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.6rem;
+}
+
+.win-footer { display: flex; justify-content: center; padding-bottom: 10px; }
+.win-ok-btn { padding: 5px 15px !important; }
+
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
